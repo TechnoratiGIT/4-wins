@@ -1,4 +1,4 @@
-import file_support as fs
+import file_support as fs # is an own written help for dealing with files
 
 
 def input_int(text=""):
