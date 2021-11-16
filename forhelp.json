@@ -1,0 +1,23 @@
+{
+    "help_main":[
+        "This is to help with the Programm and the general Rules of 4 wins",
+        "4 wins rules:\n1. Der der Zuerst eine Gerade oder eine Diagonale aus 4 Teilen hat gewinnt\nThat looks like this:\nOOO/     \\OOO\nOO/O      O\\OO\nO/OO      OO\\O\n/OOO      OOO\\\n\nor like this:\nOOOO      |OOO\nOOOO      |OOO\nOOOO      |OOO\n----      |OOO",
+        "2."
+    ],
+    "Settings_main":
+    {
+        "play": "self.Start_Game()",
+        "help": "self.help()",
+        "Player": "self.pl.Settings()",
+        "stop": "running = False"
+    },
+    "Settings_player":
+    {
+         "add": "self.addPlayer(input('player name 1:'), input_int('player color:'))",
+         "delete": "self.deletePlayer()",
+         "print": "self.PrintPlayers()",
+         "back": ["self.SavePlayerInfo()", "return"],
+         "changeColor": ["self.PrintPlayers()", "self.changePlayerColor(input('Playername of the Player :'))"]
+    }
+
+}
