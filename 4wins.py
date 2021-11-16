@@ -165,38 +165,38 @@ class FourWins:
         Tests for a win
         :return: Nothing
         """
-        """test die geraden(waagrecht)"""
+        """tests the lines (-)"""
         for i in range(self.rows):
             for y in range(self.collums - 3):
                 if self.board[i][y] == self.board[i][y+1] == self.board[i][y+2] \
                         == self.board[i][y+3] and not self.standard == self.board[i][y]:
                     return "Win for", self.board[i][y]
-        """test die geraden(senkrecht)"""
+        """tests the lines (|)"""
         for i in range(self.rows - 3):
             for y in range(self.collums):
                 if self.board[i][y] == self.board[i + 1][y] == self.board[i + 2][y] \
                         == self.board[i + 3][y] and not self.standard == self.board[i][y]:
                     return "Win for", self.board[i][y]
-        """testet die schrägen nach unten rechts"""
+        """tests lines (\)"""
         for i in range(self.rows - 3):
             for y in range(self.collums - 3):
                 if self.board[i][y] == self.board[i + 1][y + 1] == self.board[i + 2][y + 2] \
                         == self.board[i + 3][y + 3] and not self.standard == self.board[i][y]:
                     return "Win for", self.board[i][y]
-        """testet die schrägen nach unten links"""
+        """tests the lines (/)"""
         for i in range(self.rows - 3):
             for y in range(self.collums - 3):
                 if self.board[i][y + 3] == self.board[i + 1][y + 2] == self.board[i + 2][y + 1] \
                         == self.board[i + 3][y] and not self.standard == self.board[i][y + 3]:
                     return "Win for", self.board[i][y + 3]
-        """testet für ein volles board"""
+        """tests for a full board"""
         full = True
         for i in range(self.rows):
             for j in range(self.collums):
                 if self.board[i][j] == self.standard:
                     full = False
         if full:
-            return "unentschieden", ""
+            return "draw", ""
         return
 
 
