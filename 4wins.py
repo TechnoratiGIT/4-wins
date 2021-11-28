@@ -19,23 +19,19 @@ class Playerlist:
         self.colors = self.LoadPlayerInfo()[1]
 
     def Settings(self):
-        running = True
-        while running:
-            i = input()
+        while i := input() != "back":
             if i == "add":
                 self.addPlayer(input("player name 1:"), input_int("player color:"))
             elif i == "delete":
                 self.deletePlayer()
             elif i == "print":
                 self.PrintPlayers()
-            elif i == "back":
-                self.SavePlayerInfo()
-                return
             elif i == "changeColor":
                 self.PrintPlayers()
                 self.changePlayerColor(input("Playername of the Player :"))
             else:
                 return self.Settings()
+        self.SavePlayerInfo()
 
     def addPlayer(self, name: str, color: int):
         try:
@@ -79,7 +75,6 @@ class FourWins:
         self.playerlist = 0, 1
         self.standard = "⬤"
         self.board = []
-        self.fertig = False
         self.last = (0, 0)
         self.helppath = "forhelp.json"
 
@@ -96,17 +91,13 @@ class FourWins:
             self.board.append([self.standard]*self.collums)
 
     def Settings(self):
-        running = True
-        while running:
-            i = input()
+        while i := input() != "stop":
             if i == "play":
                 self.Start_Game()
             elif i == "help":
                 self.help()
             elif i == "Player":
                 self.pl.Settings()
-            elif i == "stop":
-                running = False
             else:
                 return self.Settings()
 
@@ -115,13 +106,13 @@ class FourWins:
         self.Boardreset()
         self.pl.PrintPlayers()
         self.playerlist = input_int("player number 1:"), input_int("player number 2:")
-        while not self.fertig:
+        winner = None
+        while not winner is None:
             self.Print_Board()
             self.Zug(self.pl.names[self.playerlist[p]])
-            if not self.TestWin() is None:
+            if not winner := self.TestWin() is None:
                 self.Print_Board()
-                self.fertig = True
-                print(self.TestWin()[0], self.TestWin()[1])
+                print(winner[0], winner[1])
             p = (p + 1) % 2
         return
 
